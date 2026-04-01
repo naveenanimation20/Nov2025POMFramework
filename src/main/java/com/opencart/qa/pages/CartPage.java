@@ -1,12 +1,15 @@
 package com.opencart.qa.pages;
 
+import org.openqa.selenium.By;
+
 public class CartPage {
 	
 	
-	int qty = 10;
+	By qty = By.id("cart");
 	
 	public void addToCart() {
 		System.out.println(qty);
+		System.out.println("cart is updated....");
 	}
 	
 	
