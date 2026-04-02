@@ -13,7 +13,10 @@ public class MyPage {
 	}
 	
 	
-	
+	public void logout() {
+		System.out.println("hello logout");
+		
+	}
 	
 	
 	
