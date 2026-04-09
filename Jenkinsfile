@@ -37,14 +37,14 @@ pipeline
         
                 
         stage('Regression Automation Tests') {
-            steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/naveenanimation20/Nov2025POMFramework.git'
-                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
-                    
-                }
-            }
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            cleanWs()
+            git branch: 'main', url: 'https://github.com/naveenanimation20/Nov2025POMFramework.git'
+            sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
         }
+    }
+}
             
 
                 
@@ -83,14 +83,14 @@ pipeline
         }
         
         stage('Sanity Automation Test') {
-            steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/naveenanimation20/Nov2025POMFramework.git'
-                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=stage"
-                    
-                }
-            }
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            cleanWs()
+            git branch: 'main', url: 'https://github.com/naveenanimation20/Nov2025POMFramework.git'
+            sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=stage"
         }
+    }
+}
         
         
         
@@ -114,15 +114,15 @@ pipeline
         }
 
 
-        stage('Sanity Automation Test on PROD') {
-            steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/naveenanimation20/Nov2025POMFramework.git'
-                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=prod"
-                    
-                }
-            }
+        stage('Sanity Automation Test') {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            cleanWs()
+            git branch: 'main', url: 'https://github.com/naveenanimation20/Nov2025POMFramework.git'
+            sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=stage"
         }
+    }
+}
         
         
     }
