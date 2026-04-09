@@ -40,10 +40,7 @@ pipeline
     steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             cleanWs()
-            git branch: 'main', url: 'https://github.com/naveenanimation20/Nov2025POMFramework.git'
-            sh "pwd"
-            sh "ls -la"
-            sh "cat pom.xml | head -10"
+            git branch: 'main', url: 'https://github.com/naveenanimation20/Nov2025POMFramework.git'            
             sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
         }
     }
@@ -85,7 +82,7 @@ pipeline
             }
         }
         
-        stage('Sanity Automation Test') {
+        stage('Sanity Automation Test on Stage') {
     steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             cleanWs()
@@ -117,7 +114,7 @@ pipeline
         }
 
 
-        stage('Sanity Automation Test') {
+        stage('Sanity Automation Test on PROD') {
     steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
             cleanWs()
