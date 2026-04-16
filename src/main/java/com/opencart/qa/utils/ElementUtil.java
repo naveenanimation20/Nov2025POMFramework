@@ -36,6 +36,7 @@ public class ElementUtil {
 
 	@Step("clicking on element using By Locator: {0}")
 	public void doClick(By locator) {
+		System.out.println("clickng on element using : " + locator);
 		getElement(locator).click();
 	}
 	
